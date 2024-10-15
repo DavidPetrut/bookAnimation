@@ -1005,7 +1005,11 @@ const CarouselBook: React.FC<CarouselBookProps> = (props) => {
   return (
     <div
       className="book-container"
-      style={{ width: "100vw", height: "100vh", position: "relative" }}
+      style={{
+        width: "100vw",
+        height: "100vh",
+        position: "relative",
+      }}
     >
       <div
         className="containerBook"

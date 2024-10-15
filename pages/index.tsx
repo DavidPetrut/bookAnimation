@@ -3,7 +3,10 @@ import CarouselBook from "@/apps/components/carouselBook";
 
 const Home: NextPage = () => {
   return (
-    <div className="container-about">
+    <div
+      className="container-about"
+      style={{ backgroundColor: "transparent !important" }}
+    >
       <CarouselBook
         pages={[
           {
