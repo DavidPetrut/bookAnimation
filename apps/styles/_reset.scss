@@ -1,0 +1,126 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "exo2-regular";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  //   padding-top: 60px;
+  background-color: transparent;
+  // background-image: url("https://media.istockphoto.com/id/2164312085/ro/vector/books-seamless-pattern-hand-drawn-doodle-style.jpg?s=612x612&w=0&k=20&c=XPYtl-DE3RJ1rkE76NcqaiEt41NJTVasS7jF8v_iuWg="); /* Replace with the path to your image */
+  // background-size: cover; /* Make the image cover the entire screen */
+  // background-position: center; /* Center the background image */
+  // background-repeat: no-repeat;
+}
+
+// "https://media.istockphoto.com/id/2147679887/ro/vector/c%C4%83r%C8%9Bi-ilustra%C8%9Bii-desenate-manual-model-f%C4%83r%C4%83-sudur%C4%83-schi%C8%9Ba%C8%9Bi-arta-diferitelor-c%C4%83r%C8%9Bi-de.jpg?s=1024x1024&w=is&k=20&c=ZUMYTzUninga7a52ZeIb50COLuefE8gGNToqbxcOv5c="
+
+* {
+  box-sizing: border-box;
+}
+
+.global-text-page {
+  overflow: hidden;
+}
+
+/* If you want to allow scrolling within the book pages, but hide the scrollbar */
+.global-text-page > div {
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.global-text-page > div::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+h2 {
+  margin: 0;
+  line-height: 1;
+}
+
+p {
+  margin: 0;
+  line-height: 1;
+}
+
+@media (min-width: 1300px) and (max-width: 2500px) {
+  .book-text {
+    font-size: 1.4vw !important;
+  }
+  .book-heading {
+    font-size: 2.3vw !important;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .book-text {
+    font-size: 1.3vw !important;
+  }
+  .book-heading {
+    font-size: 1.6vw !important;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1000px) {
+  .book-text {
+    font-size: 1.2vw !important;
+  }
+  .book-heading {
+    font-size: 1.6vw !important;
+  }
+}
+
+@media (min-width: 650px) and (max-width: 750px) {
+  .book-text {
+    font-size: 2.4vw !important;
+  }
+  .book-heading {
+    font-size: 2.8vw !important;
+  }
+
+  .hide-on-small {
+    display: none;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 650px) {
+  .book-text {
+    font-size: 2.45vw !important;
+  }
+  .book-heading {
+    font-size: 3vw !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .hide-on-small {
+    display: none;
+  }
+
+  .hide-on-super-small {
+    display: none;
+  }
+}
+
+@media (min-width: 200px) and (max-width: 450px) {
+  .book-text {
+    font-size: 2.45vw !important;
+  }
+  .book-heading {
+    font-size: 3vw !important;
+    margin-top: 0.2rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .hide-on-small {
+    display: none;
+  }
+
+  .hide-on-super-small {
+    display: none;
+  }
+}
