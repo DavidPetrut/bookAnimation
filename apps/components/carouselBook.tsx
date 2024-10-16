@@ -24,61 +24,80 @@ interface PageButtonProps {
   isArabic?: boolean;
 }
 
-const PageButton: React.FC<PageButtonProps> = ({
-  label,
-  url,
-  isArabic = false,
-}) => {
-  const handleClick = () => {
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
+// const PageButton: React.FC<PageButtonProps> = ({
+//   label,
+//   url,
+//   isArabic = false,
+// }) => {
+//   const handleClick = (e: React.MouseEvent) => {
+//     e.preventDefault();
+//     e.stopPropagation();
 
-  return (
-    <button
-      className="book-text"
-      onClick={handleClick}
-      style={{
-        fontFamily: "Amiri, serif",
-        padding: "10px 20px",
-        backgroundColor: "transparent",
-        border: "none",
-        borderBottom: "1px solid black",
-        color: "black",
-        fontStyle: "italic",
-        cursor: "pointer",
-        fontSize: "1.3vw",
-        marginTop: "20px",
-        transition: "background-color 0.3s",
-        position: "absolute",
-        bottom: "25px",
-        left: isArabic ? "unset" : "20px",
-        right: isArabic ? "20px" : "unset",
-        ...(isArabic && {
-          display: "inline-block",
-          fontStyle: "none",
-          direction: "rtl",
-          textAlign: "right",
-          bottom: "25px",
-          right: "20px",
-          padding: "10px 20px",
-          width: "auto",
-        }),
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = "#666666";
-        e.currentTarget.style.color = "#ffffff";
-        e.currentTarget.style.borderRadius = "5px";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = "#4a4a4a";
-        e.currentTarget.style.color = "#ffffff";
-        e.currentTarget.style.borderRadius = "5px";
-      }}
-    >
-      {label}
-    </button>
-  );
-};
+//     // Add the darkened class to the containerBook
+//     document.querySelector(".containerBook")?.classList.add("darkened");
+//     document.querySelector(".containerBook")?.classList.add("scaling");
+
+//     setTimeout(() => {
+//       setCurrentPage(pages.length);
+//       setDirectionPageSlide(1);
+//     }, 2000);
+
+//     // Delay the redirection by 3 seconds
+//     setTimeout(() => {
+//       window.open(url, "_blank", "noopener,noreferrer");
+
+//       // Remove the darkened class after redirection
+//       document.querySelector(".containerBook")?.classList.remove("darkened");
+//       document.querySelector(".containerBook")?.classList.remove("scaling");
+//     }, 2500);
+//   };
+
+//   return (
+//     <button
+//       className="book-text"
+//       onClick={handleClick}
+//       style={{
+//         fontFamily: "Amiri, serif",
+//         padding: "10px 20px",
+//         backgroundColor: "transparent",
+//         border: "none",
+//         borderBottom: "1px solid black",
+//         color: "black",
+//         fontStyle: "italic",
+//         cursor: "pointer",
+//         fontSize: "1.3vw",
+//         marginTop: "20px",
+//         transition: "background-color 0.3s",
+//         position: "absolute",
+//         bottom: "25px",
+//         left: isArabic ? "unset" : "20px",
+//         right: isArabic ? "20px" : "unset",
+//         ...(isArabic && {
+//           display: "inline-block",
+//           fontStyle: "none",
+//           direction: "rtl",
+//           textAlign: "right",
+//           bottom: "25px",
+//           right: "20px",
+//           padding: "10px 20px",
+//           width: "auto",
+//         }),
+//       }}
+//       onMouseEnter={(e) => {
+//         e.currentTarget.style.backgroundColor = "#666666";
+//         e.currentTarget.style.color = "#ffffff";
+//         e.currentTarget.style.borderRadius = "5px";
+//       }}
+//       onMouseLeave={(e) => {
+//         e.currentTarget.style.backgroundColor = "#4a4a4a";
+//         e.currentTarget.style.color = "#ffffff";
+//         e.currentTarget.style.borderRadius = "5px";
+//       }}
+//     >
+//       {label}
+//     </button>
+//   );
+// };
 
 type PageProps = {
   page: JSX.Element;
@@ -151,6 +170,83 @@ const CarouselBook: React.FC<CarouselBookProps> = (props) => {
   const handleButtonClick = () => {
     // Add your button click logic here
     console.log("Button clicked!");
+  };
+
+  const PageButton: React.FC<PageButtonProps> = ({
+    label,
+    url,
+    isArabic = false,
+  }) => {
+    const handleClick = (e: React.MouseEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      // Add the darkened class to the containerBook
+      document.querySelector(".containerBook")?.classList.add("darkened");
+      document.querySelector(".containerBook")?.classList.add("scaling");
+
+      setTimeout(() => {
+        setCurrentPage(14);
+        setDirectionPageSlide(1);
+      }, 1200);
+
+      // Delay the redirection by 3 seconds
+      setTimeout(() => {
+        window.open(url, "_blank", "noopener,noreferrer");
+
+        // Remove the darkened class after redirection
+        document.querySelector(".containerBook")?.classList.remove("darkened");
+        document.querySelector(".containerBook")?.classList.remove("scaling");
+        setCurrentPage(0);
+        setDirectionPageSlide(0);
+      }, 2500);
+    };
+
+    return (
+      <button
+        className="book-text"
+        onClick={handleClick}
+        style={{
+          fontFamily: "Amiri, serif",
+          padding: "10px 20px",
+          backgroundColor: "transparent",
+          border: "none",
+          borderBottom: "1px solid black",
+          color: "black",
+          fontStyle: "italic",
+          cursor: "pointer",
+          fontSize: "1.3vw",
+          marginTop: "20px",
+          transition: "background-color 0.3s",
+          position: "absolute",
+          bottom: "25px",
+          left: isArabic ? "unset" : "20px",
+          right: isArabic ? "20px" : "unset",
+          ...(isArabic && {
+            display: "inline-block",
+            fontStyle: "none",
+            direction: "rtl",
+            textAlign: "right",
+            bottom: "25px",
+            right: "20px",
+            padding: "10px 20px",
+            width: "auto",
+          }),
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = "#666666";
+          e.currentTarget.style.color = "#ffffff";
+          e.currentTarget.style.borderRadius = "5px";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "#4a4a4a";
+          e.currentTarget.style.color = "#ffffff";
+          e.currentTarget.style.borderRadius = "5px";
+        }}
+      >
+        {label}
+      </button>
+    );
   };
 
   const manualPages: PageProps[] = [
@@ -1026,7 +1122,7 @@ const CarouselBook: React.FC<CarouselBookProps> = (props) => {
       >
         <div
           id="book"
-          className="book"
+          className="book bookBG"
           onMouseEnter={() => setHoverBook(true)}
           onMouseLeave={() => setHoverBook(false)}
           style={generateBookStyle("book")}

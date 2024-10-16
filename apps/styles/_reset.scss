@@ -2,6 +2,94 @@
   background-color: transparent !important;
 }
 
+.containerBook.darkened {
+  transition: background-color 1s ease-in-out !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.containerBook.darkened .front,
+.containerBook.darkened .back {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 0, 0.7),
+    /* Bright yellow glow */ 0 0 20px 10px rgba(255, 255, 255, 0.5),
+    /* Faded white outer glow */ 0 0 30px 15px rgba(255, 255, 0, 0.3);
+  transition: box-shadow 2s ease-in-out;
+}
+
+.containerBook.scaling {
+  // transition: transform 5s cubic-bezier(0.11, 0, 0.5, 0) !important;
+  transition: transform 2s ease-in-out !important;
+  transform: scale(5);
+}
+
+// animation css ===============================================================
+/* Spark animation */
+
+/* Adjusted Spark animation */
+@keyframes spark {
+  0%,
+  100% {
+    transform: scale(0) translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1) translateY(-300px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+.containerBook.darkened .front::before,
+.containerBook.darkened .front::after,
+.containerBook.darkened .back::before,
+.containerBook.darkened .back::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 0, 0.8) 50%,
+    rgba(255, 165, 0, 0) 100%
+  );
+  box-shadow: 0 0 50px 25px rgba(255, 255, 255, 0.9),
+    0 0 100px 50px rgba(255, 255, 0, 0.8), 0 0 150px 75px rgba(255, 165, 0, 0.6),
+    0 0 200px 100px rgba(255, 69, 0, 0.4);
+  animation: spark 2s forwards; /* Run once over 2 seconds */
+  filter: blur(5px);
+}
+
+.containerBook.darkened .front::before,
+.containerBook.darkened .back::before {
+  left: calc(50% - 125px);
+  bottom: -125px;
+  animation-delay: 0.5s; /* Adjusted for quicker start */
+}
+
+.containerBook.darkened .front::after,
+.containerBook.darkened .back::after {
+  left: calc(50% - 125px);
+  bottom: -125px;
+  animation-delay: 1s; /* Adjusted for quicker start */
+}
+
+/* Adjusted scaling transition */
+.containerBook.scaling {
+  transition: transform 2s cubic-bezier(0.11, 0, 0.5, 0) !important;
+  transform: scale(5);
+}
+
+/* Adjusted outer glow transition */
+.containerBook.darkened .front,
+.containerBook.darkened .back {
+  box-shadow: 0 0 50px 25px rgba(255, 255, 255, 0.3),
+    0 0 100px 50px rgba(255, 255, 0, 0.2), 0 0 150px 75px rgba(255, 165, 0, 0.1),
+    0 0 200px 100px rgba(255, 69, 0, 0.05);
+  transition: box-shadow 2s ease-in-out; /* Adjusted duration */
+}
+
+// animation css finished =====================================
+
 #root,
 .App {
   background-color: transparent;
@@ -71,6 +159,9 @@ p {
   .book-heading {
     font-size: 1.6vw !important;
   }
+  .containerBook {
+    height: 50vw !important;
+  }
 }
 
 @media (min-width: 750px) and (max-width: 1000px) {
@@ -79,6 +170,9 @@ p {
   }
   .book-heading {
     font-size: 1.6vw !important;
+  }
+  .containerBook {
+    height: 50vw !important;
   }
 }
 
@@ -92,6 +186,10 @@ p {
 
   .hide-on-small {
     display: none;
+  }
+
+  .containerBook {
+    height: 100vw !important;
   }
 }
 
@@ -112,6 +210,9 @@ p {
   .hide-on-super-small {
     display: none;
   }
+  .containerBook {
+    height: 100vw !important;
+  }
 }
 
 @media (min-width: 200px) and (max-width: 450px) {
@@ -130,5 +231,8 @@ p {
 
   .hide-on-super-small {
     display: none;
+  }
+  .containerBook {
+    height: 100vw !important;
   }
 }
